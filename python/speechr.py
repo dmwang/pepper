@@ -43,10 +43,12 @@ class SpeechR(object):
             self.got_word = False
         elif not self.got_word:
             #self.got_word = True
-            for x in value:
-                print x
-            #print value[0]
-            #self.tts.say("You just said " + str(value[0]) )
+            #for x in value:
+            #    print x
+            print value
+            self.speechRec.pause(True)
+            self.tts.say("You just said " + str(value[0]))
+            self.speechRec.pause(False)
                 
     def run(self):
         """
@@ -66,7 +68,7 @@ class SpeechR(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", type=str, default="192.168.0.107",
+    parser.add_argument("--ip", type=str, default="192.168.0.106",
                         help="Robot IP address. On robot or Local Naoqi: use '127.0.0.1'.")
     parser.add_argument("--port", type=int, default=9559,
                         help="Naoqi port number")
